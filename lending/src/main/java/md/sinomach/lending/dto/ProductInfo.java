@@ -7,4 +7,5 @@ import lombok.Data;
 @Builder
 public class ProductInfo {
     private String name;
+    private Long id;
 }

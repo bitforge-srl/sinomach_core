@@ -38,6 +38,7 @@ public class MenuProductController {
     private static ProductInfo convertProduct(Product product) {
         return ProductInfo.builder()
                 .name(product.getName())
+                .id(product.getId())
                 .build();
     }
 

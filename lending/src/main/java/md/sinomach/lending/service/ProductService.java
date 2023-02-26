@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -17,5 +18,12 @@ public class ProductService {
     public Set<Product> getAllProducts(){
         List<Product> allProducts = productRepository.findAll();
         return  new HashSet<>(allProducts);
+    }
+
+    public Optional getProductByID(Long id){
+        Optional<Product> productById = productRepository.findById(id);
+        return productById;
+
+
     }
 }
