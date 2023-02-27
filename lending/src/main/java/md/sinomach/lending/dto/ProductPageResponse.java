@@ -10,22 +10,31 @@ import java.util.Set;
 
 @Data
 @Builder
-public class ProductPage {
+public class ProductPageResponse {
+    private boolean success;
+    private String error;
 
     private Long id;
-
     private String name;
     private String fullDescription;
     private String shortDescription;
     private String shortSpecification;
     private String fullSpecification;
     private String videoUrl;
-
     private List<Feature> features;
-
     private SubType subType;
+    private Set<ProductInfo> similarProducts;
 
-    private Set<ProductInfo> productsBySubType;
+    public static ProductPageResponseBuilder success(){
+      return  ProductPageResponse.builder()
+                .success(true)
+                .error("ok");
+    }
 
+    public static ProductPageResponseBuilder failed(String errorMessage){
+        return  ProductPageResponse.builder()
+                .success(false)
+                .error(errorMessage);
+    }
 
 }

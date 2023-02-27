@@ -20,10 +20,11 @@ public class ProductService {
         return  new HashSet<>(allProducts);
     }
 
-    public Optional getProductByID(Long id){
-        Optional<Product> productById = productRepository.findById(id);
-        return productById;
+    public Optional<Product> getProductByID(Long id){
+        return productRepository.findById(id);
+    }
 
-
+    public List<Product> getSimilarProductsByProduct(Product product){
+       return product.getSubType().getProducts();
     }
 }
