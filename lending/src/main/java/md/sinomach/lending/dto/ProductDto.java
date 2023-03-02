@@ -11,10 +11,9 @@ public class ProductDto {
     private String subType;
     private String name;
     private String fullDescription;
-    private String shortDescription;
     private String shortSpecifications;
-    private String fullSpecifications;
-    private String videoURLs;
+    private String content;
+    private String additionalDescription;
     private List<Feature> features;
 
     @Data

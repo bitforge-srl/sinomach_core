@@ -36,11 +36,10 @@ public class ProductController {
                     return ProductDto.builder()
                             .name(dao.getName())
                             .fullDescription(dao.getFullDescription())
-                            .shortDescription(dao.getShortSpecification())
+                            .content(dao.getContent())
                             .subType(Optional.ofNullable(dao.getSubType()).orElse(SubType.builder().build()).getName())
-                            .fullSpecifications(dao.getFullSpecification())
+                            .additionalDescription(dao.getAdditionalDescription())
                             .shortSpecifications(dao.getShortSpecification())
-                            .videoURLs(dao.getVideoUrl())
                             .features(collect)
                             .build();
                 })

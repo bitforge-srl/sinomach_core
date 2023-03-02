@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Data
@@ -18,10 +17,9 @@ public class Product {
 
     private String name;
     private String fullDescription;
-    private String shortDescription;
     private String shortSpecification;
-    private String fullSpecification;
-    private String videoUrl;
+    private String content;
+    private String additionalDescription;
 
     @ManyToOne
     @JsonIgnore
@@ -32,4 +30,4 @@ public class Product {
     @EqualsAndHashCode.Exclude
     private List<Feature> features;
 
-   }
+}

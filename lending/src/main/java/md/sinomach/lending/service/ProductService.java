@@ -27,4 +27,8 @@ public class ProductService {
     public List<Product> getSimilarProductsByProduct(Product product){
        return product.getSubType().getProducts();
     }
+
+    public Product save(Product product) {
+       return  productRepository.save(product);
+    }
 }

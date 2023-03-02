@@ -47,11 +47,10 @@ public class ProductPageController {
         return ProductPageResponse.success()
                 .id(id)
                 .name(product.getName())
-                .shortDescription(product.getShortDescription())
                 .fullDescription(product.getFullDescription())
-                .fullSpecification(product.getFullSpecification())
+                .content(product.getContent())
                 .shortSpecification(product.getShortSpecification())
-                .videoUrl(product.getVideoUrl())
+                .additionalDescription(product.getAdditionalDescription())
                 .features(product.getFeatures())
                 .build();
     }

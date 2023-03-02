@@ -19,4 +19,8 @@ public class SubTypeService {
         List<SubType> subTypes = subTypeRepository.findAll();
         return new HashSet<>(subTypes);
     }
+
+    public SubType save(SubType subTypeDao) {
+        return subTypeRepository.save(subTypeDao);
+    }
 }

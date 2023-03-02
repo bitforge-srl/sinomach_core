@@ -18,4 +18,8 @@ public class TypeService {
         List<Type> all = typeRepository.findAll();
         return new HashSet<>(all);
     }
+
+    public Type save(Type typeDao) {
+      return  typeRepository.save(typeDao);
+    }
 }

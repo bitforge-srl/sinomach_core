@@ -17,13 +17,12 @@ public class ProductPageResponse {
     private Long id;
     private String name;
     private String fullDescription;
-    private String shortDescription;
     private String shortSpecification;
-    private String fullSpecification;
-    private String videoUrl;
+    private String content;
     private List<Feature> features;
     private SubType subType;
     private Set<ProductInfo> similarProducts;
+    private String additionalDescription;
 
     public static ProductPageResponseBuilder success(){
       return  ProductPageResponse.builder()
