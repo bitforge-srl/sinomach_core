@@ -1,30 +1,57 @@
 package md.sinomach.lending.service;
 
 import lombok.RequiredArgsConstructor;
+import md.sinomach.lending.dao.FeedBackForm;
 import md.sinomach.lending.dao.Product;
 import md.sinomach.lending.dto.FeedBackFormRequest;
 import md.sinomach.lending.dto.FeedBackFormResponse;
+import md.sinomach.lending.repository.FeedBackRepository;
 import md.sinomach.lending.repository.ProductRepository;
+import org.springframework.mail.MailException;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class FeedBackService {
     private final ProductRepository productRepository;
-    private final PostService postService;
+    private final FeedBackRepository feedBackRepository;
+    private final EmailService emailService;
+    private final TelegramBotService telegramBotService;
 
     public FeedBackFormResponse processingRequest(FeedBackFormRequest feedBackFormRequest) {
-        String messageToSend = createMessageToSend(feedBackFormRequest);
-        if (postService.sendEmail(messageToSend) || postService.sendTelegramMessage(messageToSend)) {
-            return FeedBackFormResponse.success();
+        if ((feedBackFormRequest.getPhone() == null || feedBackFormRequest.getPhone().isEmpty()) &&
+                (feedBackFormRequest.getEmail() == null || feedBackFormRequest.getEmail().isEmpty())) {
+            return FeedBackFormResponse.failed("Email or Phone is mandatory params");
         }
-        return FeedBackFormResponse.failed("Message not send");
 
+
+        feedBackRepository.save(FeedBackForm.builder()
+                .comment(feedBackFormRequest.getComment())
+                .createdAt(LocalDateTime.now())
+                .email(feedBackFormRequest.getEmail())
+                .name(feedBackFormRequest.getName())
+                .phone(feedBackFormRequest.getPhone())
+                .productId(feedBackFormRequest.getProductId())
+                .build());
+
+
+        String messageToSend = createMessageToSend(feedBackFormRequest);
+
+        try {
+            emailService.sendEmail(feedBackFormRequest.getEmail(), "New request", messageToSend);
+            telegramBotService.sendMessage(messageToSend);
+            return FeedBackFormResponse.success();
+
+        } catch (MailException e) {
+            System.out.println(messageToSend);
+            return FeedBackFormResponse.failed("Message not send");
+        }
     }
 
-    private String createMessageToSend(FeedBackFormRequest feedBackFormRequest) {
+    public String createMessageToSend(FeedBackFormRequest feedBackFormRequest) {
 
         final String SEPARATOR = "\n";
 
@@ -33,10 +60,6 @@ public class FeedBackService {
 
         Optional.ofNullable(feedBackFormRequest.getEmail())
                 .ifPresent(email -> message.append("Email: ").append(email).append(SEPARATOR));
-
-
-        Optional.ofNullable(feedBackFormRequest.getId())
-                .ifPresent(id -> message.append("ID Message: ").append(id).append(SEPARATOR));
 
         Optional.ofNullable(feedBackFormRequest.getName())
                 .ifPresent(name -> message.append("Name: ").append(name).append(SEPARATOR));
@@ -52,8 +75,6 @@ public class FeedBackService {
         String nameProduct = productRepositoryById.get().getName();
         productId.ifPresent(aLong -> message.append("Product :").append(nameProduct).append(SEPARATOR));
 
-        Optional.ofNullable(feedBackFormRequest.getTime())
-                .ifPresent(date -> message.append("Time: ").append(date));
 
         return message.toString();
     }
