@@ -1,4 +1,4 @@
-package md.sinomach.lending.dto;
+package md.sinomach.lending.feedback;
 
 import lombok.Builder;
 import lombok.Data;
@@ -13,4 +13,5 @@ public class FeedBackFormRequest {
     private String phone;
     private String comment;
     private Long productId;
+    private String productName;
 }

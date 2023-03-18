@@ -1,4 +1,4 @@
-package md.sinomach.lending.dao;
+package md.sinomach.lending.telegramBot;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

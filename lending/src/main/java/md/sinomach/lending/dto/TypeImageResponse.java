@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class TypeEndImageResponse {
+public class TypeImageResponse {
     private String type;
     private String imageSource;
 }

@@ -1,6 +1,6 @@
-package md.sinomach.lending.repository;
+package md.sinomach.lending.feedback;
 
-import md.sinomach.lending.dao.FeedBackForm;
+import md.sinomach.lending.feedback.FeedBackForm;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

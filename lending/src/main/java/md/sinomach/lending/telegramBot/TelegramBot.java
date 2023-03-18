@@ -1,10 +1,7 @@
 package md.sinomach.lending.telegramBot;
 
 import lombok.RequiredArgsConstructor;
-import md.sinomach.lending.dao.TelegramBotChatId;
-import md.sinomach.lending.repository.TelegramBotRepository;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -27,20 +24,23 @@ public class TelegramBot extends TelegramLongPollingBot {
         Long chatId = update.getMessage().getChatId();
         snd.setChatId(chatId);
 
-        try {
+
+        if (telegramBotRepository.findByChatId(chatId).isEmpty()) {
             telegramBotRepository.save(TelegramBotChatId.builder()
                     .chatId(chatId)
                     .build());
             snd.setText("Вы подписались на рассылку! Ваш chatId:  " + chatId);
-        } catch (DataIntegrityViolationException e) {
+        } else {
             snd.setText("Вы уже подписаны на рассылку!");
         }
 
         try {
             execute(snd);
-        } catch (TelegramApiException e) {
+        } catch (
+                TelegramApiException e) {
             throw new RuntimeException(e);
         }
+
     }
 
     @Override

@@ -1,4 +1,4 @@
-package md.sinomach.lending.dao;
+package md.sinomach.lending.feedback;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

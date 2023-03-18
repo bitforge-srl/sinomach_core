@@ -2,7 +2,7 @@ package md.sinomach.lending.controller;
 
 import lombok.RequiredArgsConstructor;
 import md.sinomach.lending.dao.Type;
-import md.sinomach.lending.dto.TypeEndImageResponse;
+import md.sinomach.lending.dto.TypeImageResponse;
 import md.sinomach.lending.service.TypeService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,17 +14,16 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("api/type_image")
 @RequiredArgsConstructor
-
-public class TypeEndImageController {
+public class TypeImageController {
     private final TypeService typeService;
 
     @GetMapping("")
-    private Set<TypeEndImageResponse> getTypeEndImage() {
+    private Set<TypeImageResponse> getTypeImage() {
 
         Set<Type> allTypes = typeService.getAllTypes();
 
         return allTypes.stream()
-                .map(type -> TypeEndImageResponse.builder()
+                .map(type -> TypeImageResponse.builder()
                         .type(type.getName())
                         .imageSource(type.getImg())
                         .build()).collect(Collectors.toSet());

@@ -15,10 +15,6 @@ import java.util.Set;
 public class SubTypeService {
     private final  SubTypeRepository subTypeRepository;
 
-    public Set<SubType> getAllSubTypes() {
-        List<SubType> subTypes = subTypeRepository.findAll();
-        return new HashSet<>(subTypes);
-    }
 
     public SubType save(SubType subTypeDao) {
         return subTypeRepository.save(subTypeDao);
