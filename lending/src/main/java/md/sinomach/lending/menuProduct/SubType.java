@@ -1,33 +1,30 @@
-package md.sinomach.lending.dao;
+package md.sinomach.lending.menuProduct;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+import md.sinomach.lending.productPage.Product;
 
 import java.util.List;
 
 @Entity
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Product {
+public class SubType {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String name;
-    private String fullDescription;
-    private String shortSpecification;
-    private String content;
-    private String additionalDescription;
-
     @ManyToOne
     @JsonIgnore
-    private SubType subType;
+    private Type type;
 
-    @OneToMany(mappedBy = "product")
+    private String name;
+
+    @OneToMany(mappedBy = "subType")
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    private List<Feature> features;
-
+    private List<Product> products;
 }

@@ -1,10 +1,6 @@
-package md.sinomach.lending.controller;
+package md.sinomach.lending.productPage;
 
 import lombok.RequiredArgsConstructor;
-import md.sinomach.lending.dao.Product;
-import md.sinomach.lending.dto.ProductInfo;
-import md.sinomach.lending.dto.ProductPageResponse;
-import md.sinomach.lending.service.ProductService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

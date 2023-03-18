@@ -1,14 +1,13 @@
 package md.sinomach.lending.parser;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
-import md.sinomach.lending.dao.Product;
-import md.sinomach.lending.dao.SubType;
-import md.sinomach.lending.dao.Type;
-import md.sinomach.lending.service.ProductService;
-import md.sinomach.lending.service.SubTypeService;
-import md.sinomach.lending.service.TypeService;
+import md.sinomach.lending.productPage.Product;
+import md.sinomach.lending.menuProduct.SubType;
+import md.sinomach.lending.menuProduct.Type;
+import md.sinomach.lending.productPage.ProductService;
+import md.sinomach.lending.menuProduct.SubTypeService;
+import md.sinomach.lending.menuProduct.TypeService;
 import org.jsoup.Jsoup;
 import org.jsoup.helper.Validate;
 import org.jsoup.nodes.Document;

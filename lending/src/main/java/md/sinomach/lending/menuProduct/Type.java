@@ -1,12 +1,9 @@
-package md.sinomach.lending.dao;
+package md.sinomach.lending.menuProduct;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.lang.Nullable;
-import org.w3c.dom.stylesheets.LinkStyle;
+import md.sinomach.lending.menuProduct.SubType;
 
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity

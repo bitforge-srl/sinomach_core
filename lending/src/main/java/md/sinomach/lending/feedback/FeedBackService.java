@@ -1,7 +1,7 @@
 package md.sinomach.lending.feedback;
 
 import lombok.RequiredArgsConstructor;
-import md.sinomach.lending.repository.ProductRepository;
+import md.sinomach.lending.productPage.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;

@@ -1,4 +1,4 @@
-package md.sinomach.lending.dao;
+package md.sinomach.lending.productPage;
 
 
 import jakarta.persistence.*;

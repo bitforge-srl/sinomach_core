@@ -1,15 +1,8 @@
-package md.sinomach.lending.service;
+package md.sinomach.lending.menuProduct;
 
 import lombok.RequiredArgsConstructor;
-import md.sinomach.lending.dao.SubType;
-import md.sinomach.lending.dao.Type;
-import md.sinomach.lending.repository.SubTypeRepository;
-import md.sinomach.lending.repository.TypeRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 @Service
 @RequiredArgsConstructor
 public class SubTypeService {

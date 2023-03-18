@@ -1,8 +1,6 @@
-package md.sinomach.lending.service;
+package md.sinomach.lending.menuProduct;
 
 import lombok.RequiredArgsConstructor;
-import md.sinomach.lending.dao.Type;
-import md.sinomach.lending.repository.TypeRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;

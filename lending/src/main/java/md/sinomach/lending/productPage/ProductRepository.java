@@ -1,6 +1,5 @@
-package md.sinomach.lending.repository;
+package md.sinomach.lending.productPage;
 
-import md.sinomach.lending.dao.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

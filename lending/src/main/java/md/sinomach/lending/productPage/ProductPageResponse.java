@@ -1,9 +1,8 @@
-package md.sinomach.lending.dto;
+package md.sinomach.lending.productPage;
 
 import lombok.Builder;
 import lombok.Data;
-import md.sinomach.lending.dao.Feature;
-import md.sinomach.lending.dao.SubType;
+import md.sinomach.lending.menuProduct.SubType;
 
 import java.util.List;
 import java.util.Set;

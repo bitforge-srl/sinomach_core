@@ -1,4 +1,4 @@
-package md.sinomach.lending.dto;
+package md.sinomach.lending.menuProduct;
 
 import lombok.Builder;
 import lombok.Data;

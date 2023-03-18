@@ -1,7 +1,5 @@
 package md.sinomach.lending.feedback;
 
-import md.sinomach.lending.dao.Product;
-
 import java.util.Optional;
 
 public class FeedbackUtils {

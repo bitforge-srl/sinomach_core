@@ -1,28 +1,20 @@
-package md.sinomach.lending.controller;
+package md.sinomach.lending.menuProduct;
 
 import lombok.RequiredArgsConstructor;
-import md.sinomach.lending.dao.Product;
-import md.sinomach.lending.dao.SubType;
-import md.sinomach.lending.dao.Type;
-import md.sinomach.lending.dto.ProductInfo;
-import md.sinomach.lending.dto.SubTypeMenuInfo;
-import md.sinomach.lending.dto.TypeMenuInfo;
-import md.sinomach.lending.service.ProductService;
-import md.sinomach.lending.service.TypeService;
+import md.sinomach.lending.productPage.Product;
+import md.sinomach.lending.productPage.ProductInfo;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("api/menu_product")
 @RequiredArgsConstructor
 public class MenuProductController {
-    private final ProductService ProductService;
+    private final md.sinomach.lending.productPage.ProductService ProductService;
     private final TypeService typeService;
 
     @GetMapping("all")
