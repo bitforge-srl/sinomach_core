@@ -1,6 +1,7 @@
 package md.sinomach.lending.productPage;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,6 +17,7 @@ public class Feature {
     private Long id;
 
     @ManyToOne
+    @JsonIgnore
     private Product product;
 
     private String description;
