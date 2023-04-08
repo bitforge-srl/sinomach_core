@@ -21,6 +21,7 @@ public class Product {
     private String shortSpecification;
     private String content;
     private String additionalDescription;
+    private String img;
 
     @ManyToOne
     @JsonIgnore

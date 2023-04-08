@@ -18,6 +18,7 @@ public class Type {
     private String name;
     private String img;
     private String imgBanner;
+    private String shortDescription;
 
     @OneToMany(mappedBy = "type")
 

@@ -8,11 +8,12 @@ import java.util.List;
 @Data
 @Builder
 public class ProductDto {
-    private String subType;
     private String name;
+    private String subType;
     private String fullDescription;
     private String shortSpecifications;
     private String content;
+    private String img;
     private String additionalDescription;
     private List<Feature> features;
 

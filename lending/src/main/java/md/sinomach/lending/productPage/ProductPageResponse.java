@@ -3,9 +3,9 @@ package md.sinomach.lending.productPage;
 import lombok.Builder;
 import lombok.Data;
 import md.sinomach.lending.menuProduct.SubType;
+import md.sinomach.lending.menuProduct.Type;
 
 import java.util.List;
-import java.util.Set;
 
 @Data
 @Builder
@@ -15,12 +15,13 @@ public class ProductPageResponse {
 
     private Long id;
     private String name;
+    private Type type;
+    private SubType subType;
     private String fullDescription;
     private String shortSpecification;
     private String content;
+    private String img;
     private List<Feature> features;
-    private SubType subType;
-    private Set<ProductInfo> similarProducts;
     private String additionalDescription;
 
     public static ProductPageResponseBuilder success(){

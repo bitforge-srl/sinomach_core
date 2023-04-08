@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("api/product_page")
@@ -29,14 +27,7 @@ public class ProductPageController {
 
         Product product = productByID.get();
 
-        Set<ProductInfo> similarProducts = productService.getSimilarProductsByProduct(product).stream()
-                .map(this::convertProduct)
-                .collect(Collectors.toSet());
-
-        ProductPageResponse productPageResponse = getBuild(id, product);
-        productPageResponse.setSimilarProducts(similarProducts);
-
-        return productPageResponse;
+        return getBuild(id, product);
     }
 
     private ProductPageResponse getBuild(Long id, Product product) {
@@ -48,14 +39,11 @@ public class ProductPageController {
                 .shortSpecification(product.getShortSpecification())
                 .additionalDescription(product.getAdditionalDescription())
                 .features(product.getFeatures())
+                .type(product.getSubType().getType())
+                .img(product.getImg())
                 .build();
     }
 
-    private ProductInfo convertProduct(Product product) {
-        return ProductInfo.builder()
-                .id(product.getId())
-                .name(product.getName())
-                .build();
-    }
+
 }
 

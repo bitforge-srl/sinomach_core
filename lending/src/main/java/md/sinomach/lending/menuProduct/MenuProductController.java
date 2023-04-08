@@ -31,6 +31,8 @@ public class MenuProductController {
         return ProductInfo.builder()
                 .name(product.getName())
                 .id(product.getId())
+                .img(product.getImg())
+                .shortSpecification(product.getShortSpecification())
                 .build();
     }
 
