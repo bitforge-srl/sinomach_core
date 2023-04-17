@@ -15,12 +15,18 @@ public class FeedBackService {
     private final FeedBackRepository feedBackRepository;
     private final List<FeedbackListener> listeners;
 
+    private String reg1 = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" +
+            "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+    private String reg2 = "^[\\d\\+][\\d\\(\\)\\ -]{5,14}\\d$";
     public FeedBackFormResponse processingRequest(FeedBackFormRequest feedBackFormRequest) {
         if ((feedBackFormRequest.getPhone() == null || feedBackFormRequest.getPhone().isEmpty()) &&
                 (feedBackFormRequest.getEmail() == null || feedBackFormRequest.getEmail().isEmpty())) {
-            return FeedBackFormResponse.failed("Email or Phone is mandatory params");
+            return FeedBackFormResponse.failed("Введите валидный емайл или телефон");
         }
 
+        if (!(feedBackFormRequest.getEmail().matches(reg1) || feedBackFormRequest.getPhone().matches(reg2))){
+            return FeedBackFormResponse.failed("Введите валидный емайл или телефон");
+        }
 
         feedBackRepository.save(FeedBackForm.builder()
                 .comment(feedBackFormRequest.getComment())
