@@ -13,9 +13,9 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 public class TelegramBot extends TelegramLongPollingBot {
     public final TelegramBotRepository telegramBotRepository;
 
-    @Value("${BOT_NAME}")
+    @Value("${md.sinomach.lending.telegramBot.nameName}")
     private String BOT_NAME;
-    @Value("${BOT_TOKEN}")
+    @Value("${md.sinomach.lending.telegramBot.botToken}")
     private String BOT_TOKEN;
 
     @Override
