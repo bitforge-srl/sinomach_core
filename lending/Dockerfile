@@ -1,7 +1,7 @@
 FROM maven:3.8.5-openjdk-18 as build
 
 COPY .  /lending
-
+WORKDIR "/lending"
 RUN mvn package -DskipTests
 
 
