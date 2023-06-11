@@ -19,6 +19,7 @@ public class Type {
     private String img;
     private String imgBanner;
     private String shortDescription;
+    private Integer order;
 
     @OneToMany(mappedBy = "type")
 
