@@ -1,13 +1,11 @@
 package md.sinomach.lending.menuProduct;
 
+import lombok.Builder;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -20,6 +18,15 @@ public class TypeService {
     }
 
     public Type save(Type typeDao) {
-      return  typeRepository.save(typeDao);
+        return typeRepository.save(typeDao);
+    }
+
+    public TypeDeleteResponse deleteById(Long id) {
+        Optional<Type> typeById = typeRepository.findById(id);
+        if (typeById.isEmpty()) {
+            return TypeDeleteResponse.failed("Type is not found");
+        }
+        typeRepository.deleteById(id);
+        return TypeDeleteResponse.success();
     }
 }
