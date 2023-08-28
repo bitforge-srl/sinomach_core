@@ -1,10 +1,7 @@
 package md.sinomach.lending.product;
 
 import lombok.RequiredArgsConstructor;
-import md.sinomach.lending.product.dto.AddProductRequest;
-import md.sinomach.lending.product.dto.AddProductResponse;
-import md.sinomach.lending.product.dto.DeleteProductResponse;
-import md.sinomach.lending.product.dto.ProductDto;
+import md.sinomach.lending.product.dto.*;
 import md.sinomach.lending.subtypes.SubType;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.web.bind.annotation.*;
@@ -59,7 +56,7 @@ public class ProductController {
         product.setAdditionalDescription(addProductRequest.getAdditionalDescription());
         product.setImg(addProductRequest.getImg());
         product.setSubType(addProductRequest.getSubType());
-        product.setFeatures(new ArrayList<Feature>());
+        product.setFeatures(new ArrayList<>());
 
         return productService.addProduct(product);
     }
@@ -76,8 +73,9 @@ public class ProductController {
         return productService.getProductByID(id).get();
     }
 
-    @PostMapping("/edit/{id}")
-    public Product editProduct(@PathVariable("id") Long id){
-        return null;
+    @PostMapping("/edit")
+    public EditProductResponse editProduct(@RequestBody EditProductRequest editProduct){
+
+        return productService.editProduct(editProduct);
     }
 }

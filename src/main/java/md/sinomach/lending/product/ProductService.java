@@ -3,6 +3,8 @@ package md.sinomach.lending.product;
 import lombok.RequiredArgsConstructor;
 import md.sinomach.lending.product.dto.AddProductResponse;
 import md.sinomach.lending.product.dto.DeleteProductResponse;
+import md.sinomach.lending.product.dto.EditProductRequest;
+import md.sinomach.lending.product.dto.EditProductResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -55,5 +57,23 @@ public class ProductService {
             return DeleteProductResponse.failed(DeleteProductResponse.Error.failed);
         }
         return DeleteProductResponse.success();
+    }
+
+    public EditProductResponse editProduct(EditProductRequest editProductRequest) {
+        try {
+            Product product = productRepository.getReferenceById(editProductRequest.getId());
+            product.setName(editProductRequest.getName());
+            product.setFullDescription(editProductRequest.getFullDescription());
+            product.setAdditionalDescription(editProductRequest.getAdditionalDescription());
+            product.setShortSpecification(editProductRequest.getShortSpecification());
+            product.setContent(editProductRequest.getContent());
+            product.setImg(editProductRequest.getImg());
+            product.setSubType(editProductRequest.getSubType());
+            productRepository.save(product);
+        } catch (Exception e) {
+            return EditProductResponse.failed(EditProductResponse.Error.failed);
+        }
+
+        return EditProductResponse.success();
     }
 }
