@@ -10,10 +10,11 @@ public class AddImageResponse {
     private Error error;
     private Long id;
 
-    public static AddImageResponse success() {
+    public static AddImageResponse success(Long idSavedImage) {
         return AddImageResponse.builder()
                 .success(true)
                 .error(Error.ok)
+                .id(idSavedImage)
                 .build();
     }
     public static AddImageResponse failed(Error error){
