@@ -1,6 +1,8 @@
 package md.sinomach.lending.product;
 
 import lombok.RequiredArgsConstructor;
+import md.sinomach.lending.image.dto.AddImageRequest;
+import md.sinomach.lending.image.dto.AddImageResponse;
 import md.sinomach.lending.product.dto.*;
 import md.sinomach.lending.subtypes.SubType;
 import org.jetbrains.annotations.NotNull;
@@ -74,7 +76,7 @@ public class ProductController {
     }
 
     @PostMapping("/edit")
-    public EditProductResponse editProduct(@RequestBody EditProductRequest editProduct){
+    public EditProductResponse editProduct(@RequestBody EditProductRequest editProduct) {
 
         return productService.editProduct(editProduct);
     }

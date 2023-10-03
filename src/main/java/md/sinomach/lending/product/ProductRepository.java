@@ -1,6 +1,6 @@
 package md.sinomach.lending.product;
 
-import jakarta.validation.constraints.NotNull;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 public interface ProductRepository extends JpaRepository<Product, Long> {
     Boolean existsByName(String name);
 
+    @NotNull Product getReferenceById(@NotNull Long id);
 
-    Product getReferenceById(Long id);
+
 }

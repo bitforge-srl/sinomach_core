@@ -1,11 +1,11 @@
 package md.sinomach.lending.product;
 
 import lombok.RequiredArgsConstructor;
-import md.sinomach.lending.product.dto.AddProductResponse;
-import md.sinomach.lending.product.dto.DeleteProductResponse;
-import md.sinomach.lending.product.dto.EditProductRequest;
-import md.sinomach.lending.product.dto.EditProductResponse;
+import md.sinomach.lending.image.dto.AddImageRequest;
+import md.sinomach.lending.image.dto.AddImageResponse;
+import md.sinomach.lending.product.dto.*;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.HashSet;
 import java.util.List;
@@ -76,4 +76,5 @@ public class ProductService {
 
         return EditProductResponse.success();
     }
+
 }
