@@ -16,7 +16,7 @@ public class Image {
     private Long id;
 
     private String nameFile;
-
     private byte[] bytes;
+    private String contentType;
 
 }
