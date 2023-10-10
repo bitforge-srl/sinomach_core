@@ -68,6 +68,7 @@ public class ProductService {
             product.setShortSpecification(editProductRequest.getShortSpecification());
             product.setContent(editProductRequest.getContent());
             product.setImg(editProductRequest.getImg());
+            product.setImgId(editProductRequest.getImgId());
             product.setSubType(editProductRequest.getSubType());
             productRepository.save(product);
         } catch (Exception e) {

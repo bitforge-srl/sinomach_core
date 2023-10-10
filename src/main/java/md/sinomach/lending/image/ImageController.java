@@ -15,7 +15,6 @@ public class ImageController {
 
     @PostMapping("/upload")
     public AddImageResponse addImage(@RequestParam("file") MultipartFile file) {
-
         return imageService.addImage(file);
     }
 
@@ -27,5 +26,10 @@ public class ImageController {
     @GetMapping(value = "/get/{id}", produces = MediaType.IMAGE_JPEG_VALUE)
     public @ResponseBody byte[] getImageById(@PathVariable("id") Long id) {
         return imageService.getImageById(id);
+    }
+
+   @PostMapping("/downloadAllProductImages")
+   public void downloadAllProductImages(){
+        imageService.downloadAllProductImages();
     }
 }

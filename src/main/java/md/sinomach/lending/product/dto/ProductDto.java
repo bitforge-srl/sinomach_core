@@ -14,6 +14,7 @@ public class ProductDto {
     private String shortSpecifications;
     private String content;
     private String img;
+    private Long imgId;
     private String additionalDescription;
     private List<Feature> features;
 

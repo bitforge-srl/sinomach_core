@@ -11,5 +11,6 @@ public class ProductInfo {
     private Long id;
     private Type type;
     private String img;
+    private Long imgId;
     private String shortSpecification;
 }

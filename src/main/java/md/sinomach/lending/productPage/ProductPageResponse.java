@@ -22,6 +22,7 @@ public class ProductPageResponse {
     private String shortSpecification;
     private String content;
     private String img;
+    private Long imgId;
     private List<Feature> features;
     private String additionalDescription;
 

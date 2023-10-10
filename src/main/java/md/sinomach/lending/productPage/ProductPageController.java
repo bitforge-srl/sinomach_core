@@ -43,6 +43,7 @@ public class ProductPageController {
                 .features(product.getFeatures())
                 .type(product.getSubType().getType())
                 .img(product.getImg())
+                .imgId(product.getImgId())
                 .build();
     }
 

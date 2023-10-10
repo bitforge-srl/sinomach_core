@@ -23,6 +23,7 @@ public class AddProductRequest {
     private String content;
     private String additionalDescription;
     private String img;
+    private Long imgId;
 
     private SubType subType;
 

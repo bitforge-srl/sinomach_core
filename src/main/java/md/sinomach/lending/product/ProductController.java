@@ -41,6 +41,7 @@ public class ProductController {
                             .additionalDescription(dao.getAdditionalDescription())
                             .shortSpecifications(dao.getShortSpecification())
                             .features(collect)
+                            .imgId(dao.getImgId())
                             .build();
                 })
                 .collect(Collectors.toSet());
@@ -57,6 +58,7 @@ public class ProductController {
         product.setContent(addProductRequest.getContent());
         product.setAdditionalDescription(addProductRequest.getAdditionalDescription());
         product.setImg(addProductRequest.getImg());
+        product.setImgId(addProductRequest.getImgId());
         product.setSubType(addProductRequest.getSubType());
         product.setFeatures(new ArrayList<>());
 
