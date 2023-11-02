@@ -57,22 +57,20 @@ public class TypeService {
         return AddTypeResponse.success();
     }
 
-    public EditTypeNameResponse editTypeName(Long id, Type editedType) {
-
-        Boolean exist = typeRepository.existsByName(editedType.getName());
-        if (exist) {
-            return EditTypeNameResponse.failed(EditTypeNameResponse.Error.alreadyExist);
-        }
+    public EditTypeNameResponse editType(Long id, Type editedType) {
 
         Optional<Type> typeById = typeRepository.findById(id);
+
         if (typeById.isEmpty()) {
             return EditTypeNameResponse.failed(EditTypeNameResponse.Error.type_not_found);
         }
-
         Type typeEditType = typeById.get();
-        typeEditType.setName(editedType.getName());
-        typeRepository.save(typeEditType);
 
+        typeEditType.setName(editedType.getName());
+        typeEditType.setShortDescription(editedType.getShortDescription());
+        typeEditType.setImgId(editedType.getImgId());
+
+        typeRepository.save(typeEditType);
         return EditTypeNameResponse.success();
     }
 

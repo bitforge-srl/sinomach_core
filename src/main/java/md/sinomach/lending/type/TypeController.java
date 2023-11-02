@@ -30,9 +30,9 @@ public class TypeController {
         return typeService.addType(type);
     }
 
-    @PostMapping("/editNameType/{id}")
-    public EditTypeNameResponse editTypeName(@PathVariable("id") Long id, @RequestBody Type editedType) {
-        return typeService.editTypeName(id, editedType);
+    @PostMapping("/editType/{id}")
+    public EditTypeNameResponse editType(@PathVariable("id") Long id, @RequestBody Type editedType) {
+        return typeService.editType(id, editedType);
     }
 
     @PostMapping("/updateOrderTypes")
