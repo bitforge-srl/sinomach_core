@@ -2,6 +2,7 @@ package md.sinomach.lending.image;
 
 import lombok.RequiredArgsConstructor;
 import md.sinomach.lending.image.dto.AddImageResponse;
+import md.sinomach.lending.image.dto.DeleteImageResponse;
 import md.sinomach.lending.image.dto.GetImageResponse;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -28,8 +29,18 @@ public class ImageController {
         return imageService.getImageById(id);
     }
 
-   @PostMapping("/downloadAllProductImages")
-   public void downloadAllProductImages(){
+   @DeleteMapping("/delete/{imgId}") public DeleteImageResponse deleteImageByImgId(@PathVariable("imgId") Long imdId){
+        return imageService.deleteImageByImgId(imdId);
+    }
+
+    @PostMapping("/downloadAllProductImages")
+    public void downloadAllProductImages() {
         imageService.downloadAllProductImages();
     }
+
+    @PostMapping("/downloadAllTypesImages")
+    public void downloadAllTypesImages(){
+        imageService.downloadAllTypesImages();
+    }
+
 }

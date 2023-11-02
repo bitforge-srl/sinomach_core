@@ -17,6 +17,7 @@ public class Type {
 
     private String name;
     private String img;
+    private Long imgId;
     private String imgBanner;
     private String shortDescription;
     @Column(name = "\"order\"" )

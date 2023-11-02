@@ -4,11 +4,14 @@ import lombok.RequiredArgsConstructor;
 import md.sinomach.lending.image.dto.*;
 import md.sinomach.lending.product.Product;
 import md.sinomach.lending.product.ProductService;
+import md.sinomach.lending.type.Type;
+import md.sinomach.lending.type.TypeService;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
 import java.net.URL;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -17,6 +20,7 @@ import java.util.Set;
 public class ImageService {
     private final ImageRepository imageRepository;
     private final ProductService productService;
+    private final TypeService typeService;
 
     public AddImageResponse addImage(MultipartFile file) {
 
@@ -54,6 +58,15 @@ public class ImageService {
         return GetImageByIdResponse.success(bytes);
     }
 
+    public DeleteImageResponse deleteImageByImgId(Long imgId) {
+        try {
+            imageRepository.deleteById(imgId);
+        } catch (Exception e) {
+            return DeleteImageResponse.failed(DeleteImageResponse.Error.failed);
+        }
+        return DeleteImageResponse.success(imgId);
+    }
+
     public void downloadAllProductImages() {
         Set<Product> allProducts = productService.getAllProducts();
 
@@ -72,6 +85,28 @@ public class ImageService {
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
+        }
+    }
+
+    public void downloadAllTypesImages() {
+        List<Type> allTypes = typeService.getAllTypes();
+
+        for (Type type : allTypes) {
+            String imgUrl = "https://cn-sinomach.md/" + type.getImg();
+            File file = new File(imgUrl);
+            String fileName = file.getName();
+
+            Long imageId;
+            try {
+                byte[] bytes = recoverImageFromUrl(imgUrl);
+                Image image = imageRepository.save(new Image(null, fileName, bytes, "image/png"));
+                imageId = image.getId();
+                type.setImgId(imageId);
+                typeService.save(type);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+
         }
     }
 

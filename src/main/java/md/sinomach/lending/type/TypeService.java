@@ -46,6 +46,7 @@ public class TypeService {
         Type newType = typeRepository.save(new Type(null,
                 type.getName(),
                 type.getImg(),
+                type.getImgId(),
                 type.getImgBanner(),
                 type.getShortDescription(),
                 sizeListOfType + 1,
