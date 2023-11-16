@@ -44,6 +44,7 @@ public class SimilarProductsController {
                 .id(product.getId())
                 .name(product.getName())
                 .img(product.getImg())
+                .imgId(product.getImgId())
                 .shortSpecification(product.getShortSpecification())
                 .type(product.getSubType().getType())
                 .build();
